@@ -9,29 +9,21 @@ public class Main {
     static Monster monster = new Monster(20, 2);
 
     public static void main(String[] args) {
-
         System.out.println("Игра началась. Отважный рыцарь попал в лес.");
-
-
         hero.info();
         monster.info();
-
         while (true) {
             playerTurn();
             if (monster.isDead()) {
                 System.out.println("Орк повержен, Рыцарь молодец!");
                 break;
             }
-
             aiTurn();
-
             if (hero.isDead()) {
                 System.out.println("Рыцарь повержен, Орк молодец!");
                 break;
             }
         }
-
-
         System.out.println("Игра завершена.");
     }
 
@@ -41,12 +33,13 @@ public class Main {
         if (heroAction == 1) {
             System.out.println("Рыцарь атаковал Орка");
             monster.takeDamage(hero.attack);
-
+            monster.info();
         } else if (heroAction == 2) {
             hero.rest();
         } else {
             hero.skipTurn();
         }
+        System.out.println();
     }
 
     public static void aiTurn() {
@@ -58,5 +51,6 @@ public class Main {
         } else {
             monster.angry();
         }
+        System.out.println();
     }
 }
